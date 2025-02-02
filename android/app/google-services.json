@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "102536884318",
+    "project_id": "hungerdash",
+    "storage_bucket": "hungerdash.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:102536884318:android:bf5889b447be224b2f44cf",
+        "android_client_info": {
+          "package_name": "com.example.hungerdash"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "102536884318-i7t6k4f22sgfe43mrb2ncuj0prtvi9o8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hungerdash",
+            "certificate_hash": "323b5264c62351352bbcd783898e5152167244c7"
+          }
+        },
+        {
+          "client_id": "102536884318-e4e905bclqrmboejsknvs5me0ptjasiu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2FReJBYb8tWR3CdxmqDhtwiX1ozaRoTo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "102536884318-e4e905bclqrmboejsknvs5me0ptjasiu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
