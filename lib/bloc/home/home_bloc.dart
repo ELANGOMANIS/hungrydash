@@ -4,7 +4,6 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  // In-memory list to track liked items.
   List<Map<String, dynamic>> likedItems = [];
 
   HomeBloc() : super(HomeInitialState()) {
@@ -18,10 +17,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     List<Map<String, dynamic>> displayedFoodItems = [];
 
     if (event.selectedIndex == 0) {
-      // Show all items (duplicated)
       displayedFoodItems = event.allFoodItems + event.allFoodItems;
     } else {
-      // Filter by category
       String category = categories[event.selectedIndex];
       var filteredItems = event.allFoodItems
           .where((item) => item['category'] == category)
@@ -56,9 +53,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       displayedFoodItems: displayedFoodItems,
     ));
   }
+  Stream<HomeState> mapEventToState(HomeEvent event) async* {
+    if (event is RefreshDataEvent) {
+      yield HomeLoadingState(); // Show loading state
+      await Future.delayed(const Duration(seconds: 2)); // Simulate network delay
+      yield HomeLoadedState(displayedFoodItems: event.allFoodItems); // Refresh data
+    }
+  }
 
-
-  // Static categories list
   final List<String> categories = [
     "All", "Veg", "Non-Veg", "Chinese Food", "Fast Food", "Desserts", "Beverages"
   ];

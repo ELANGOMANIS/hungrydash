@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
+
+class FoodItemShimmer extends StatelessWidget {
+  const FoodItemShimmer({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // You can adjust the dimensions to match your real UI
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Shimmer.fromColors(
+        baseColor: Colors.grey[300]!,
+        highlightColor: Colors.grey[100]!,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Image placeholder
+            Container(
+              height: 120,
+              width: double.infinity,
+              color: Colors.grey,
+            ),
+            const SizedBox(height: 8),
+            // Title placeholder
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Container(
+                height: 16,
+                width: 100,
+                color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 4),
+            // Price placeholder
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Container(
+                height: 14,
+                width: 60,
+                color: Colors.grey,
+              ),
+            ),
+            const Spacer(),
+            // Icon placeholders
+            Padding(
+              padding: const EdgeInsets.only(right: 10, bottom: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    height: 24,
+                    width: 24,
+                    color: Colors.grey,
+                  ),
+                  const SizedBox(width: 8),
+                  Container(
+                    height: 24,
+                    width: 24,
+                    color: Colors.grey,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

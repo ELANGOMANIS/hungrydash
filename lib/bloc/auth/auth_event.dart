@@ -4,4 +4,4 @@ class CheckAuthStatus extends AuthEvent {}
 
 class SignInWithGoogle extends AuthEvent {}
 
-class SignOutEvent extends AuthEvent {}
+class LogoutEvent extends AuthEvent {}  // This is the event for logging out

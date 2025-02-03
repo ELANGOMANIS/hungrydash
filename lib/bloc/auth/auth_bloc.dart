@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import '../database/localdatabase.dart';
-import '../data/user_model.dart';
+import '../../database/localdatabase.dart';
+import '../../data/user_model.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
 
@@ -15,7 +15,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthInitial()) {
     on<CheckAuthStatus>(_onCheckAuthStatus);
     on<SignInWithGoogle>(_onSignInWithGoogle);
-    on<SignOutEvent>(_onSignOut);
+    on<LogoutEvent>(_onLogout);
   }
 
   Future<void> _onCheckAuthStatus(CheckAuthStatus event, Emitter<AuthState> emit) async {
@@ -62,10 +62,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  Future<void> _onSignOut(SignOutEvent event, Emitter<AuthState> emit) async {
+  Future<void> _onLogout(LogoutEvent event, Emitter<AuthState> emit) async {
     await _auth.signOut();
     await _googleSignIn.signOut();
     await _dbHelper.clearUser();
-    emit(AuthInitial());
+    emit(AuthInitial());  // Reset to initial state
   }
 }

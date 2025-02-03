@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';  // Import the loading animation package
-import '../bloc/auth_bloc.dart';
-import '../bloc/auth_event.dart';
-import '../bloc/auth_state.dart';
-import '../data/user_model.dart';
+import '../bloc/auth/auth_bloc.dart';
+import '../bloc/auth/auth_event.dart';
+import '../bloc/auth/auth_state.dart';
 import '../utils/nav_bar.dart';
-import 'home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -23,26 +22,23 @@ class _LoginScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
 
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthSuccess) {
-          final user = state.user;
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => BottomNavBarPage(user: state.user)),
           );
         } else if (state is AuthFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Signup Failed')),
+            const SnackBar(content: Text('Signup Failed')),
           );
         }
       },
       child: Scaffold(
         body: Stack(
           children: [
-            // Main content of your page
             Column(
               children: [
                 Expanded(
@@ -53,8 +49,8 @@ class _LoginScreenBody extends StatelessWidget {
                         'assets/delivery.png',
                         height: screenHeight * 0.2,
                       ),
-                      SizedBox(height: 20),
-                      Text(
+                      const SizedBox(height: 20),
+                      const Text(
                         'Get Ready to Go ?',
                         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -64,7 +60,7 @@ class _LoginScreenBody extends StatelessWidget {
                           onPressed: () =>
                               context.read<AuthBloc>().add(SignInWithGoogle()),
                           style: OutlinedButton.styleFrom(
-                            side: BorderSide(color: Colors.grey),
+                            side: const BorderSide(color: Colors.grey),
                             padding:
                             EdgeInsets.symmetric(vertical: screenHeight * 0.02),
                             shape: RoundedRectangleBorder(
@@ -78,7 +74,7 @@ class _LoginScreenBody extends StatelessWidget {
                                 'assets/google.png',
                                 height: 20,
                               ),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               const Text(
                                 "Continue with Google",
                                 style: TextStyle(color: Colors.grey),
@@ -87,13 +83,12 @@ class _LoginScreenBody extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),
               ],
             ),
-            // Overlay the loading animation when in AuthLoading state
             if (context.watch<AuthBloc>().state is AuthLoading)
               Center(
                 child: LoadingAnimationWidget.threeArchedCircle(

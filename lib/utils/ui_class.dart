@@ -9,7 +9,7 @@ class UIUtils {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(8),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Colors.black12,
               blurRadius: 4,
@@ -18,7 +18,7 @@ class UIUtils {
           ],
         ),
         child: TextFormField(
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             border: InputBorder.none,
             hintText: "Search",
             prefixIcon: Icon(Icons.search),
@@ -56,7 +56,7 @@ class UIUtils {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Colors.black12,
             blurRadius: 4,
@@ -94,7 +94,7 @@ class UIUtils {
                   children: [
                     Text(
                       "\₹${item['rate']}",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         color: Colors.grey,
                         decoration: TextDecoration.lineThrough, // Adds strikethrough
@@ -116,11 +116,11 @@ class UIUtils {
                 children: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.favorite_border),
+                    icon: const Icon(Icons.favorite_border),
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(CupertinoIcons.add_circled),
+                    icon: const Icon(CupertinoIcons.add_circled),
                   ),
                 ],
               ),
